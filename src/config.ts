@@ -2,14 +2,14 @@ export const SITE = {
   website: "https://guicciardi.net/", // replace this with your deployed domain
   author: "Emanuele Guicciardi",
   profile: "https://guicciardi.net/",
-  desc: "Description",
+  desc: "Senior Developer",
   title: "Emanuele Guicciardi",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
   postPerIndex: 4,
   postPerPage: 4,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
-  showArchives: true,
+  showArchives: false,
   showBackButton: true, // show back button in post detail
   editPost: {
     enabled: false,

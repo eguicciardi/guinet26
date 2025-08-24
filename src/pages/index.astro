@@ -8,44 +8,35 @@ import LinkButton from "@/components/LinkButton.astro";
 import Card from "@/components/Card.astro";
 import Hr from "@/components/Hr.astro";
 import getSortedPosts from "@/utils/getSortedPosts";
-import IconRss from "@/assets/icons/IconRss.svg";
+import getSortedLinks from "@/utils/getSortedLinks";
 import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
 import { SITE } from "@/config";
 import { SOCIALS } from "@/constants";
+import LinkCard from "@/components/LinkCard.astro";
+import Hello from "@/components/Hello.astro";
 
 const posts = await getCollection("blog");
 
 const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+
+const links = await getCollection("linkDump");
+
+const sortedLinks = getSortedLinks(links);
 ---
 
 <Layout>
   <Header />
   <main id="main-content" data-layout="index">
     <section id="hero" class="pt-8 pb-6">
-      <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
-        Hello!
-      </h1>
-      <a
-        target="_blank"
-        href="/rss.xml"
-        class="inline-block"
-        aria-label="rss feed"
-        title="RSS Feed"
-      >
-        <IconRss
-          width={20}
-          height={20}
-          class="scale-125 stroke-accent stroke-3 rtl:-rotate-90"
-        />
-        <span class="sr-only">RSS Feed</span>
-      </a>
+      <Hello />
       <p class="mt-2">
-        My name is Emanuele and I'm a senior developer at Lifetronic Srl. I work on bespoke software projects from prototyping to deploying and real-life use.  
+        My name is Emanuele and I'm a senior developer at Lifetronic Srl. I work
+        on bespoke software projects from prototyping to deploying and real-life
+        use.
       </p>
       {
-        // only display if at least one social link is enabled
         SOCIALS.length > 0 && (
           <div class="mt-4 flex flex-col sm:flex-row sm:items-center">
             <div class="me-2 mb-1 whitespace-nowrap sm:mb-0">Social Links:</div>
@@ -76,7 +67,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
     {
       recentPosts.length > 0 && (
         <section id="recent-posts" class="pt-12 pb-6">
-          <h2 class="text-2xl font-semibold tracking-wide">Recent Posts</h2>
+          <h2 class="text-2xl font-semibold tracking-wide">Recent posts</h2>
           <ul>
             {recentPosts.map(
               (data, index) =>
@@ -87,9 +78,36 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
       )
     }
 
+    {
+      recentPosts.length > 0 && (
+        <div class="my-8 text-center">
+          <LinkButton href="/posts/">
+            All Posts
+            <IconArrowRight class="inline-block rtl:-rotate-180" />
+          </LinkButton>
+        </div>
+      )
+    }
+
+    {
+      sortedLinks.length > 0 && (
+        <section id="recent-links" class="pt-12 pb-6">
+          <h2 class="text-2xl font-semibold tracking-wide">
+            Link dump
+          </h2>
+          <ul>
+            {sortedLinks.map(
+              (data, index) =>
+                index < SITE.postPerIndex && <LinkCard {...data} />
+            )}
+          </ul>
+        </section>
+      )
+    }
+
     <div class="my-8 text-center">
-      <LinkButton href="/posts/">
-        All Posts
+      <LinkButton href="/links/">
+        All Links
         <IconArrowRight class="inline-block rtl:-rotate-180" />
       </LinkButton>
     </div>

@@ -1,0 +1,46 @@
+---
+// greetings.astro
+const greetings = [
+  "Hello!",
+  "Ciao!",
+  "Hola!",
+  "Bonjour!",
+  "Hallo!",
+  "こんにちは!",
+  "안녕하세요!",
+];
+---
+
+<h1
+  id="greeting"
+  class="my-4 inline-block text-4xl font-bold transition-opacity duration-500 sm:my-8 sm:text-5xl"
+>
+  {greetings[0]}
+</h1>
+
+<script>
+  const greetings = [
+    "Hello!",
+    "Ciao!",
+    "Hola!",
+    "Bonjour!",
+    "Hallo!",
+    "こんにちは!",
+    "안녕하세요!",
+  ];
+  let index = 0;
+  const h1 = document.getElementById("greeting") ?? document.createElement("h1");
+
+  setInterval(() => {
+    // fade out
+    h1.style.opacity = '0';
+
+    setTimeout(() => {
+      // cambia testo
+      index = (index + 1) % greetings.length;
+      h1.textContent = greetings[index];
+      // fade in
+      h1.style.opacity = '1';
+    }, 500); // corrispone alla durata della transizione
+  }, 3000);
+</script>

@@ -1,0 +1,38 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import Main from "@/layouts/Main.astro";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import LinkCard from "@/components/LinkCard.astro";
+import Pagination from "@/components/Pagination.astro";
+import getSortedLinks from "@/utils/getSortedLinks";
+import { SITE } from "@/config";
+import LinkDisclaimer from "@/components/LinkDisclaimer.astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const links = await getCollection("linkDump");
+  return paginate(getSortedLinks(links), { pageSize: SITE.postPerPage });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<Layout title={`Links | ${SITE.title}`}>
+  <Header />
+  <Main
+    pageTitle="Links"
+    pageDesc="Random things from around the web, worth a click."
+  >
+    <ul>
+      {page.data.map(data => <LinkCard {...data} />)}
+    </ul>
+    <LinkDisclaimer />
+  </Main>
+
+  <Pagination {page} />
+
+
+  <Footer noMarginTop={page.lastPage > 1} />
+</Layout>

@@ -6,7 +6,7 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import LinkCard from "@/components/LinkCard.astro";
-import Pagination from "@/components/Pagination.astro";
+import LinkPagination from "@/components/LinkPagination.astro";
 import getSortedLinks from "@/utils/getSortedLinks";
 import { SITE } from "@/config";
 import LinkDisclaimer from "@/components/LinkDisclaimer.astro";
@@ -31,7 +31,7 @@ const { page } = Astro.props;
     <LinkDisclaimer />
   </Main>
 
-  <Pagination {page} />
+  <LinkPagination {page} />
 
 
   <Footer noMarginTop={page.lastPage > 1} />

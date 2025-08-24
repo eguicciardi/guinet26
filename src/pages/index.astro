@@ -32,9 +32,11 @@ const sortedLinks = getSortedLinks(links);
     <section id="hero" class="pt-8 pb-6">
       <Hello />
       <p class="mt-2">
-        My name is Emanuele and I'm a senior developer at Lifetronic Srl. I work
-        on bespoke software projects from prototyping to deploying and real-life
-        use.
+        Senior full-stack developer specialized in backend and modern
+        JavaScript frameworks. I build scalable applications, design APIs, and
+        handle DevOps with Docker and AWS. Passionate about turning ideas into
+        functional, user-focused solutions.
+        At the moment I serve as Senior Developer at Lifetronic Srl in Pisa, Italy.
       </p>
       {
         SOCIALS.length > 0 && (
@@ -92,9 +94,7 @@ const sortedLinks = getSortedLinks(links);
     {
       sortedLinks.length > 0 && (
         <section id="recent-links" class="pt-12 pb-6">
-          <h2 class="text-2xl font-semibold tracking-wide">
-            Link dump
-          </h2>
+          <h2 class="text-2xl font-semibold tracking-wide">Link dump</h2>
           <ul>
             {sortedLinks.map(
               (data, index) =>

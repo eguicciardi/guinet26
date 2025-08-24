@@ -1,6 +1,7 @@
 ---
 import Hr from "./Hr.astro";
 import Socials from "./Socials.astro";
+import Analytics from "@vercel/analytics/astro";
 
 const currentYear = new Date().getFullYear();
 
@@ -11,6 +12,7 @@ export interface Props {
 const { noMarginTop = false } = Astro.props;
 ---
 
+<Analytics />
 <footer class:list={["w-full", { "mt-auto": !noMarginTop }]}>
   <Hr noPadding />
   <div

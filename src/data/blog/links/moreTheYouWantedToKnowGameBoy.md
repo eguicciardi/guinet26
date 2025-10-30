@@ -1,4 +1,5 @@
 ---
+type: link
 title: "More than you wanted to know about how Game Boy cartridges work"
 author: Allison Parrish
 authorWebsite: https://www.decontextualize.com/

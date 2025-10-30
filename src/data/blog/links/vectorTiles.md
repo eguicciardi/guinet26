@@ -1,4 +1,5 @@
 ---
+type: link
 title: Building Vector Tiles from scratch
 author: Andre Debuisne
 authorWebsite: https://www.debuisne.com

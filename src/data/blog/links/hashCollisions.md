@@ -1,4 +1,5 @@
 ---
+type: link
 title: "The probability of a hash collision"
 author: Kevin Galligan
 authorWebsite: https://kevingal.com/blog.html

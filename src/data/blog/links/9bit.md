@@ -1,4 +1,5 @@
 ---
+type: link
 title: We'd be Better Off with 9-bit Bytes
 author: Pavel Panchekha
 authorWebsite: https://pavpanchekha.com

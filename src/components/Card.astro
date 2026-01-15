@@ -3,6 +3,7 @@ import { slugifyStr } from "@/utils/slugify";
 import type { CollectionEntry } from "astro:content";
 import { getPath } from "@/utils/getPath";
 import Datetime from "./Datetime.astro";
+import IconWww from "@/assets/icons/IconWww.svg";
 
 export interface Props extends CollectionEntry<"blog"> {
   variant?: "h2" | "h3";
@@ -10,27 +11,68 @@ export interface Props extends CollectionEntry<"blog"> {
 
 const { variant = "h2", data, id, filePath } = Astro.props;
 
-const { title, description, pubDatetime, modDatetime, timezone } = data;
+const {
+  type = "article",
+  title,
+  description,
+  pubDatetime,
+  modDatetime,
+  timezone,
+  author,
+  authorWebsite,
+  resourceUrl,
+} = data;
+
+const isLink = type === "link";
+const linkUrl = isLink && resourceUrl ? resourceUrl : getPath(id, filePath);
+const linkTarget = isLink && resourceUrl ? "_blank" : undefined;
+const linkRel = isLink && resourceUrl ? "noopener noreferrer" : undefined;
 
 const headerProps = {
   style: { viewTransitionName: slugifyStr(title) },
-  class: "text-lg font-medium decoration-dashed hover:underline",
+  class: isLink
+    ? "text-lg font-medium decoration-dashed hover:underline flex items-center gap-2"
+    : "text-lg font-medium decoration-dashed hover:underline",
 };
 ---
 
 <li class="my-6">
   <a
-    href={getPath(id, filePath)}
+    href={linkUrl}
+    target={linkTarget}
+    rel={linkRel}
     class="inline-block text-lg font-medium text-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
   >
     {
       variant === "h2" ? (
-        <h2 {...headerProps}>{title}</h2>
+        <h2 {...headerProps}>
+          {isLink && <IconWww />}
+          {title}
+        </h2>
       ) : (
-        <h3 {...headerProps}>{title}</h3>
+        <h3 {...headerProps}>
+          {isLink && <IconWww />}
+          {title}
+        </h3>
       )
     }
   </a>
-  <Datetime {pubDatetime} {modDatetime} {timezone} />
+  {
+    isLink && author && authorWebsite ? (
+      <div class="text-sm text-muted-foreground flex items-center gap-2">
+        by{" "}
+        <a
+          class="decoration-dashed hover:underline"
+          href={authorWebsite}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {author}
+        </a>
+      </div>
+    ) : (
+      <Datetime {pubDatetime} {modDatetime} {timezone} />
+    )
+  }
   <p>{description}</p>
 </li>

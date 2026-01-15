@@ -8,11 +8,9 @@ import LinkButton from "@/components/LinkButton.astro";
 import Card from "@/components/Card.astro";
 import Hr from "@/components/Hr.astro";
 import getSortedPosts from "@/utils/getSortedPosts";
-import getSortedLinks from "@/utils/getSortedLinks";
 import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
 import { SITE } from "@/config";
 import { SOCIALS } from "@/constants";
-import LinkCard from "@/components/LinkCard.astro";
 import Hello from "@/components/Hello.astro";
 
 const posts = await getCollection("blog");
@@ -20,10 +18,6 @@ const posts = await getCollection("blog");
 const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
-
-const links = await getCollection("linkDump");
-
-const sortedLinks = getSortedLinks(links);
 ---
 
 <Layout>
@@ -90,27 +84,6 @@ const sortedLinks = getSortedLinks(links);
         </div>
       )
     }
-
-    {
-      sortedLinks.length > 0 && (
-        <section id="recent-links" class="pt-12 pb-6">
-          <h2 class="text-2xl font-semibold tracking-wide">Link dump</h2>
-          <ul>
-            {sortedLinks.map(
-              (data, index) =>
-                index < SITE.postPerIndex && <LinkCard {...data} />
-            )}
-          </ul>
-        </section>
-      )
-    }
-
-    <div class="my-8 text-center">
-      <LinkButton href="/links/">
-        All Links
-        <IconArrowRight class="inline-block rtl:-rotate-180" />
-      </LinkButton>
-    </div>
   </main>
   <Footer />
 </Layout>

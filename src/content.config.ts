@@ -3,12 +3,12 @@ import { glob } from "astro/loaders";
 import { SITE } from "@/config";
 
 export const BLOG_PATH = "src/data/blog";
-export const LINK_PATH = "src/data/links";
 
 const blog = defineCollection({
   loader: glob({ pattern: "**/[^_]*.md", base: `./${BLOG_PATH}` }),
   schema: ({ image }) =>
     z.object({
+      type: z.enum(["article", "link"]).default("article"),
       author: z.string().default(SITE.author),
       pubDatetime: z.date(),
       modDatetime: z.date().optional().nullable(),
@@ -21,20 +21,10 @@ const blog = defineCollection({
       canonicalURL: z.string().optional(),
       hideEditPost: z.boolean().optional(),
       timezone: z.string().optional(),
+      // Link-specific fields
+      authorWebsite: z.string().optional(),
+      resourceUrl: z.string().optional(),
     }),
 });
 
-const linkDump = defineCollection({
-  loader: glob({ pattern: "*.md", base: `./${LINK_PATH}` }),
-  // schema: z.object({
-  //   title: z.string(),
-  //   author: z.string(),
-  //   authorWebsite: z.string(),
-  //   resourceUrl: z.string(),
-  //   pubDatetime: z.date(),
-  //   tags: z.array(z.string()).default(["external link"]),
-  //   description: z.string(),
-  // }),
-});
-
-export const collections = { blog, linkDump };
+export const collections = { blog };

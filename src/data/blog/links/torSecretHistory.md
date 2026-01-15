@@ -1,4 +1,5 @@
 ---
+type: link
 title: "The Secret History of Tor: How a Military Project Became a Lifeline for Privacy"
 author: Ben Collier
 authorWebsite: https://thereader.mitpress.mit.edu

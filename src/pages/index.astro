@@ -26,16 +26,13 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
     <section id="hero" class="pt-8 pb-6">
       <Hello />
       <p class="mt-2">
-        Senior full-stack developer specialized in backend and modern
-        JavaScript frameworks. I build scalable applications, design APIs, and
-        handle DevOps with Docker and AWS. Passionate about turning ideas into
-        functional, user-focused solutions.
-        At the moment I serve as Senior Developer at Lifetronic Srl in Pisa, Italy.
+        Senior full-stack developer with a strong focus on backend architecture and modern JavaScript frameworks. I build scalable applications, design robust APIs, and orchestrate DevOps workflows with Docker and AWS — turning ideas into reliable, user-focused products.<br />
+        Currently serving as Senior Developer at <a href="https://lifetronic.it" title="Lifetronic Srl website">Lifetronic Srl</a>, Pisa, Italy.
       </p>
       {
         SOCIALS.length > 0 && (
           <div class="mt-4 flex flex-col sm:flex-row sm:items-center">
-            <div class="me-2 mb-1 whitespace-nowrap sm:mb-0">Social Links:</div>
+            <div class="me-2 mb-1 whitespace-nowrap sm:mb-0">You can also find me:</div>
             <Socials />
           </div>
         )
@@ -63,7 +60,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
     {
       recentPosts.length > 0 && (
         <section id="recent-posts" class="pt-12 pb-6">
-          <h2 class="text-2xl font-semibold tracking-wide">Recent posts</h2>
+          <h2 class="text-2xl font-semibold tracking-wide">Recent posts and links</h2>
           <ul>
             {recentPosts.map(
               (data, index) =>

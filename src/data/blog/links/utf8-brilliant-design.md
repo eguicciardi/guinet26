@@ -1,4 +1,5 @@
 ---
+type: link
 title: "UTF-8 is a Brilliant Design"
 author: Vishnu Haridas
 authorWebsite: https://iamvishnu.com

@@ -9,15 +9,12 @@ export async function GET() {
   const sortedPosts = getSortedPosts(posts);
   return rss({
     title: SITE.title,
-    description: SITE.desc,
+    excerpt: SITE.desc,
     site: SITE.website,
     items: sortedPosts.map(({ data, id, filePath }) => ({
-      link:
-        data.type === "link" && data.resourceUrl
-          ? data.resourceUrl
-          : getPath(id, filePath),
+      link: getPath(id, filePath),
       title: data.title,
-      excerpt: data.excerpt,
+      description: data.excerpt,
       pubDate: new Date(data.modDatetime ?? data.pubDatetime),
     })),
   });

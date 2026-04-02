@@ -12,12 +12,9 @@ export async function GET() {
     excerpt: SITE.desc,
     site: SITE.website,
     items: sortedPosts.map(({ data, id, filePath }) => ({
-      link:
-        data.type === "link" && data.resourceUrl
-          ? data.resourceUrl
-          : getPath(id, filePath),
+      link: getPath(id, filePath),
       title: data.title,
-      excerpt: data.description,
+      description: data.excerpt,
       pubDate: new Date(data.modDatetime ?? data.pubDatetime),
     })),
   });

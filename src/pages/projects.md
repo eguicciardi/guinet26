@@ -1,5 +1,5 @@
 ---
-layout: ../layouts/StaticPageLayout.astro
+layout: ../layouts/AboutLayout.astro
 title: "Projects"
 ---
 

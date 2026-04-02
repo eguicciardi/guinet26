@@ -61,7 +61,7 @@ Tailwind CSS v4 with custom theme variables (CSS custom properties) in `src/styl
 ```yaml
 title: "Article Title"
 pubDatetime: 2025-10-30T12:00:00Z
-description: "Brief description"
+excerpt: "Brief description"
 tags: [tag1, tag2]
 featured: false  # Optional: highlight on homepage
 draft: false     # Optional: hide from production
@@ -77,7 +77,7 @@ authorWebsite: https://example.com
 resourceUrl: https://example.com/article
 pubDatetime: 2025-10-30T12:00:00Z
 tags: [tag1, tag2]
-description: "Quote or description"
+excerpt: "Quote or description"
 ```
 
 ## Build Pipeline

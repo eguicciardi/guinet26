@@ -10,7 +10,7 @@ Create a new `.md` file in `src/data/blog/` with the following frontmatter:
 ---
 title: "Your Article Title"
 pubDatetime: 2025-10-30T12:00:00Z
-description: "A brief description of your article"
+excerpt: "A brief description of your article"
 tags:
   - tag1
   - tag2
@@ -34,7 +34,7 @@ pubDatetime: 2025-10-30T12:00:00Z
 tags:
   - tag1
   - tag2
-description: "A brief description or quote from the link"
+excerpt: "A brief description or quote from the link"
 ---
 
 Optional: Add your own introduction or commentary about the link here.

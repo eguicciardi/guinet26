@@ -12,6 +12,6 @@ tags:
   - bytes
   - networks
   - internet
-description:
+excerpt:
   "A number of 70s computing systems had nine-bit bytes, most prominently the PDP-10, but today11 Apparently, it was the System/360 that really set the standard here. all systems use 8-bit bytes and that now seems natural."
 ---

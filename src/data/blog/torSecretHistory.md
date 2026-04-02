@@ -10,6 +10,6 @@ tags:
   - privacy
   - networks
   - internet
-description:
+excerpt:
   "A story of secrecy, resistance, and the fight for digital freedom."
 ---

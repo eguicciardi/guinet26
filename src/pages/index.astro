@@ -32,7 +32,6 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
       {
         SOCIALS.length > 0 && (
           <div class="mt-4 flex flex-col sm:flex-row sm:items-center">
-            <div class="me-2 mb-1 whitespace-nowrap sm:mb-0">You can also find me:</div>
             <Socials />
           </div>
         )
@@ -60,7 +59,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
     {
       recentPosts.length > 0 && (
         <section id="recent-posts" class="pt-12 pb-6">
-          <h2 class="text-2xl font-semibold tracking-wide">Recent posts and links</h2>
+          <h2 class="text-2xl font-semibold tracking-wide">Recent posts</h2>
           <ul>
             {recentPosts.map(
               (data, index) =>
@@ -75,7 +74,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
       recentPosts.length > 0 && (
         <div class="my-8 text-center">
           <LinkButton href="/posts/">
-            All Posts
+            Older posts
             <IconArrowRight class="inline-block rtl:-rotate-180" />
           </LinkButton>
         </div>

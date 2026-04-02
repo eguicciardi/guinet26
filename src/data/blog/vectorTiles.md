@@ -9,6 +9,6 @@ tags:
   - maps
   - vector
   - google maps
-description:
+excerpt:
   "I have been looking for a more efficient way to render the map."
 ---

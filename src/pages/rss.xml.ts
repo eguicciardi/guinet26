@@ -9,7 +9,7 @@ export async function GET() {
   const sortedPosts = getSortedPosts(posts);
   return rss({
     title: SITE.title,
-    description: SITE.desc,
+    excerpt: SITE.desc,
     site: SITE.website,
     items: sortedPosts.map(({ data, id, filePath }) => ({
       link:
@@ -17,7 +17,7 @@ export async function GET() {
           ? data.resourceUrl
           : getPath(id, filePath),
       title: data.title,
-      description: data.description,
+      excerpt: data.description,
       pubDate: new Date(data.modDatetime ?? data.pubDatetime),
     })),
   });

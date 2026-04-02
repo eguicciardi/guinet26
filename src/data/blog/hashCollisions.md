@@ -8,6 +8,6 @@ pubDatetime: 2022-01-15T00:00:00Z
 tags:
   - probability
   - hashing
-description:
+excerpt:
   "Exploring the math behind hash collisions."
 ---

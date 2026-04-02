@@ -11,7 +11,7 @@ tags:
   - ContextAPI
   - Styled-Components
   - TypeScript
-description:
+excerpt:
   "EXAMPLE POST: Developing a terminal-like website using ReactJS, TypeScript and Styled-Components.
   Includes features like autocomplete, multiple themes, command hints etc."
 timezone: "Asia/Yangon"

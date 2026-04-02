@@ -9,6 +9,6 @@ tags:
   - gameboy
   - nintendo
   - hardware
-description:
+excerpt:
   "I set out a while ago to make a Game Boy cartridge from scratch."
 ---

@@ -4,6 +4,7 @@ import type { CollectionEntry } from "astro:content";
 import { getPath } from "@/utils/getPath";
 import Datetime from "./Datetime.astro";
 import IconWww from "@/assets/icons/IconWww.svg";
+import Hr from "@/components/Hr.astro";
 
 export interface Props extends CollectionEntry<"blog"> {
   variant?: "h2" | "h3";
@@ -14,7 +15,7 @@ const { variant = "h2", data, id, filePath } = Astro.props;
 const {
   type = "article",
   title,
-  description,
+  excerpt,
   pubDatetime,
   modDatetime,
   timezone,
@@ -59,8 +60,8 @@ const headerProps = {
   </a>
   {
     isLink && author && authorWebsite ? (
-      <div class="text-sm text-muted-foreground flex items-center gap-2">
-        by{" "}
+      <div class="text-muted-foreground flex items-center gap-2 text-sm">
+        originally posted by {" "}
         <a
           class="decoration-dashed hover:underline"
           href={authorWebsite}
@@ -74,5 +75,6 @@ const headerProps = {
       <Datetime {pubDatetime} {modDatetime} {timezone} />
     )
   }
-  <p>{description}</p>
+  <p class="py-2">{excerpt}</p>
+  <Hr noPadding={false} />
 </li>

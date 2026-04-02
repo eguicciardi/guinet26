@@ -8,7 +8,7 @@ pubDatetime: 2025-10-30T12:00:00Z
 draft: true
 tags:
   - example
-description: "This is an example link showing how to add custom introductions."
+excerpt: "This is an example link showing how to add custom introductions."
 ---
 
 This is an example of the new unified content system. You can now add your own introduction, commentary, or context to links you share.

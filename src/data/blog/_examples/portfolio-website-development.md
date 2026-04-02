@@ -10,7 +10,7 @@ tags:
   - TailwindCSS
   - HeadlessCMS
   - Blog
-description:
+excerpt:
   "EXAMPLE POST: My experience about developing my first portfolio website and a blog
   using NextJS and a headless CMS."
 timezone: "Asia/Yangon"

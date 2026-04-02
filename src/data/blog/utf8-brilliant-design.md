@@ -9,6 +9,6 @@ tags:
   - utf-8
   - ascii
   - encoding
-description:
+excerpt:
   "The first time I learned about UTF-8 encoding, I was fascinated by how well-thought and brilliantly it was designed to represent millions of characters from different languages and scripts, and still be backward compatible with ASCII."
 ---

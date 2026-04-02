@@ -10,5 +10,5 @@ tags:
   - ascii
   - encoding
 excerpt:
-  "The first time I learned about UTF-8 encoding, I was fascinated by how well-thought and brilliantly it was designed to represent millions of characters from different languages and scripts, and still be backward compatible with ASCII."
+  "UTF-8 is everywhere in software development, yet few developers truly understand how it works under the hood. This article breaks it down beautifully — variable-width encoding, ASCII backward compatibility, and a hands-on playground to visualize it all."
 ---

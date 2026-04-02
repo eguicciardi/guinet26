@@ -5,7 +5,7 @@ title: "Projects"
 
 ## 🏗️ Infrastructure / CloudLab
 
-Un ecosistema di servizi Docker pensato per girare su una VPS personale — ogni pezzo fa la sua parte.
+An ecosystem of Docker services designed to run on a small VPS. Visit my Github page for the full source code and documentation.
 
 ### cloudlab-ingress
 

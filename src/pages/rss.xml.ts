@@ -9,7 +9,7 @@ export async function GET() {
   const sortedPosts = getSortedPosts(posts);
   return rss({
     title: SITE.title,
-    excerpt: SITE.desc,
+    description: SITE.desc,
     site: SITE.website,
     items: sortedPosts.map(({ data, id, filePath }) => ({
       link: getPath(id, filePath),

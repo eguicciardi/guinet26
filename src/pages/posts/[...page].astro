@@ -11,7 +11,10 @@ import getSortedPosts from "@/utils/getSortedPosts";
 import { SITE } from "@/config";
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  const posts = await getCollection(
+    "blog",
+    ({ data }) => !data.draft && data.type === "article"
+  );
   return paginate(getSortedPosts(posts), { pageSize: SITE.postPerPage });
 }) satisfies GetStaticPaths;
 
@@ -21,8 +24,8 @@ const { page } = Astro.props;
 <Layout title={`Posts | ${SITE.title}`}>
   <Header />
   <Main
-    pageTitle="Posts"
-    pageDesc="All the articles and links I've shared."
+    pageTitle="Articles"
+    pageDesc="Articles I've written."
   >
     <ul>
       {page.data.map(data => <Card {...data} />)}

@@ -48,7 +48,10 @@ const formatDate = (date: Date, tz?: string) =>
           >
             {data.title}
             {isExternal && (
-              <IconExternalLink class="inline-block size-4 align-text-top" />
+              <IconExternalLink
+                class="inline-block size-4 align-text-top"
+                aria-hidden="true"
+              />
             )}
           </a>
         </li>

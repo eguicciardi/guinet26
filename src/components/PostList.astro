@@ -1,0 +1,57 @@
+---
+import type { CollectionEntry } from "astro:content";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+import { getPath } from "@/utils/getPath";
+import { SITE } from "@/config";
+import IconExternalLink from "@/assets/icons/IconExternalLink.svg";
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+export interface Props {
+  posts: CollectionEntry<"blog">[];
+}
+
+const { posts } = Astro.props;
+
+const formatDate = (date: Date, tz?: string) =>
+  dayjs(date)
+    .tz(tz || SITE.timezone)
+    .format("YYYY-MM-DD");
+---
+
+<ul class="my-2 space-y-1">
+  {
+    posts.map(({ data, id, filePath }) => {
+      const isLink = data.type === "link";
+      const href =
+        isLink && data.resourceUrl ? data.resourceUrl : getPath(id, filePath);
+      return (
+        <li class="flex items-baseline gap-3">
+          <span class="select-none opacity-60" aria-hidden="true">
+            &#9702;
+          </span>
+          <time
+            datetime={data.pubDatetime.toISOString()}
+            class="shrink-0 tabular-nums opacity-70"
+          >
+            {formatDate(data.pubDatetime, data.timezone)}
+          </time>
+          <a
+            href={href}
+            target={isLink ? "_blank" : undefined}
+            rel={isLink ? "noopener noreferrer" : undefined}
+            class="text-accent decoration-dashed underline-offset-4 hover:underline"
+          >
+            {data.title}
+            {isLink && (
+              <IconExternalLink class="inline-block size-4 align-text-top" />
+            )}
+          </a>
+        </li>
+      );
+    })
+  }
+</ul>

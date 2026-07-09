@@ -26,7 +26,8 @@ html[data-theme="dark"] {
   --color-accent: var(--accent);
   --color-muted: var(--muted);
   --color-border: var(--border);
-  --font-mono: var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-mono:
+    var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, monospace;
 }
 
 @layer base {

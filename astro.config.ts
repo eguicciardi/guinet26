@@ -1,4 +1,4 @@
-import { defineConfig, envField } from "astro/config";
+import { defineConfig, envField, fontProviders } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import { SITE } from "./src/config";
@@ -7,6 +7,15 @@ import { satteri } from '@astrojs/markdown-satteri';
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
+  fonts: [
+    {
+      provider: fontProviders.google(),
+      name: "IBM Plex Mono",
+      cssVariable: "--font-ibm-plex-mono",
+      weights: [400, 500, 600, 700],
+      fallbacks: ["ui-monospace", "SFMono-Regular", "monospace"],
+    },
+  ],
   integrations: [
     sitemap({
       filter: page => SITE.showArchives || !page.endsWith("/archives"),

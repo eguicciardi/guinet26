@@ -3,83 +3,134 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
-import Socials from "@/components/Socials.astro";
-import LinkButton from "@/components/LinkButton.astro";
-import Card from "@/components/Card.astro";
-import Hr from "@/components/Hr.astro";
+import PostList from "@/components/PostList.astro";
 import getSortedPosts from "@/utils/getSortedPosts";
-import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
 import { SITE } from "@/config";
 import { SOCIALS } from "@/constants";
-import Hello from "@/components/Hello.astro";
 
 const posts = await getCollection("blog");
-
 const sortedPosts = getSortedPosts(posts);
-const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
-const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+
+const articles = sortedPosts.filter(({ data }) => data.type === "article");
+const links = sortedPosts.filter(({ data }) => data.type === "link");
+
+const github = SOCIALS.find(s => s.name === "GitHub")?.href;
+const linkedin = SOCIALS.find(s => s.name === "LinkedIn")?.href;
+const email = SOCIALS.find(s => s.name === "Mail")?.href;
+
+const infoLinks = [
+  { label: "about", href: "/about/", external: false },
+  { label: "github", href: github, external: true },
+  { label: "linkedin", href: linkedin, external: true },
+  { label: "email", href: email, external: false },
+].filter(l => Boolean(l.href));
 ---
 
 <Layout>
   <Header />
-  <main id="main-content" data-layout="index">
-    <section id="hero" class="pt-8 pb-6">
-      <Hello />
-      <p class="mt-2">
-        Senior full-stack developer with a strong focus on backend architecture and modern JavaScript frameworks. I build scalable applications, design robust APIs, and orchestrate DevOps workflows with Docker and AWS — turning ideas into reliable, user-focused products.<br />
-        Currently serving as Senior Developer at <a href="https://lifetronic.it" title="Lifetronic Srl website">Lifetronic Srl</a>, Pisa, Italy.
+  <main
+    id="main-content"
+    data-layout="index"
+    class="mx-4 mb-12 w-full max-w-app sm:ml-8 lg:ml-16"
+  >
+    <h1 class="mt-8 mb-8 px-4 text-3xl font-bold tracking-tight sm:text-4xl">
+      {SITE.author}
+    </h1>
+
+    <section id="info" class="mb-10">
+      <h2 class="mb-2 text-lg font-semibold">
+        <span class="select-none opacity-60" aria-hidden="true"
+          >&bull;</span
+        > info
+      </h2>
+      <p class="max-w-prose leading-relaxed">
+        Senior full-stack developer with a strong focus on backend architecture
+        and modern JavaScript frameworks. I build scalable applications, design
+        robust APIs, and orchestrate DevOps workflows with Docker and AWS,
+        turning ideas into reliable, user-focused products. Currently serving as
+        Senior Developer at <a
+          href="https://lifetronic.it"
+          title="Lifetronic Srl website"
+          class="text-accent decoration-dashed underline-offset-4 hover:underline"
+          >Lifetronic Srl</a
+        >, Pisa, Italy.
       </p>
-      {
-        SOCIALS.length > 0 && (
-          <div class="mt-4 flex flex-col sm:flex-row sm:items-center">
-            <Socials />
-          </div>
-        )
-      }
+      <ul class="my-3 space-y-1">
+        {
+          infoLinks.map(link => (
+            <li class="flex items-baseline gap-3">
+              <span
+                class="select-none opacity-60"
+                aria-hidden="true"
+              >
+                &#9702;
+              </span>
+              <a
+                href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
+                class="text-accent decoration-dashed underline-offset-4 hover:underline"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </section>
 
-    <Hr />
-
     {
-      featuredPosts.length > 0 && (
-        <>
-          <section id="featured" class="pt-12 pb-6">
-            <h2 class="text-2xl font-semibold tracking-wide">Featured</h2>
-            <ul>
-              {featuredPosts.map(data => (
-                <Card variant="h3" {...data} />
-              ))}
-            </ul>
-          </section>
-          {recentPosts.length > 0 && <Hr />}
-        </>
-      )
-    }
-
-    {
-      recentPosts.length > 0 && (
-        <section id="recent-posts" class="pt-12 pb-6">
-          <h2 class="text-2xl font-semibold tracking-wide">Recent posts</h2>
-          <ul>
-            {recentPosts.map(
-              (data, index) =>
-                index < SITE.postPerIndex && <Card variant="h3" {...data} />
-            )}
-          </ul>
+      articles.length > 0 && (
+        <section id="articles" class="mb-10">
+          <h2 class="mb-2 text-lg font-semibold">
+            <span class="select-none opacity-60" aria-hidden="true">
+              &bull;
+            </span>{" "}
+            articles
+          </h2>
+          <PostList posts={articles.slice(0, SITE.postPerIndex)} />
+          <a
+            href="/posts/"
+            class="text-accent mt-2 inline-block decoration-dashed underline-offset-4 hover:underline"
+          >
+            see all articles &rarr;
+          </a>
         </section>
       )
     }
 
     {
-      recentPosts.length > 0 && (
-        <div class="my-8 text-center">
-          <LinkButton href="/posts/">
-            Older posts
-            <IconArrowRight class="inline-block rtl:-rotate-180" />
-          </LinkButton>
-        </div>
+      links.length > 0 && (
+        <section id="links" class="mb-10">
+          <h2 class="mb-2 text-lg font-semibold">
+            <span class="select-none opacity-60" aria-hidden="true">
+              &bull;
+            </span>{" "}
+            links
+          </h2>
+          <PostList posts={links.slice(0, SITE.postPerIndex)} />
+          <a
+            href="/links/"
+            class="text-accent mt-2 inline-block decoration-dashed underline-offset-4 hover:underline"
+          >
+            see all links &rarr;
+          </a>
+        </section>
       )
     }
+
+    <section id="rss" class="mb-6">
+      <h2 class="text-lg font-semibold">
+        <span class="select-none opacity-60" aria-hidden="true"
+          >&bull;</span
+        >{" "}
+        <a
+          href="/rss.xml"
+          class="text-accent decoration-dashed underline-offset-4 hover:underline"
+          >rss</a
+        >
+      </h2>
+    </section>
   </main>
   <Footer />
 </Layout>

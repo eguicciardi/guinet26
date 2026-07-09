@@ -93,7 +93,7 @@ const nextPost =
   <main
     id="main-content"
     class:list={[
-      "mx-auto w-full max-w-app px-4 pb-12",
+      "w-full max-w-app px-4 pb-12",
       { "mt-8": !SITE.showBackButton },
     ]}
     data-pagefind-body
@@ -106,7 +106,7 @@ const nextPost =
     </h1>
     {
       isLink && authorWebsite && (
-        <div class="mt-2 text-sm text-muted-foreground">
+        <div class="text-muted-foreground mt-2 text-sm">
           by{" "}
           <a
             class="decoration-dashed hover:underline"
@@ -146,7 +146,7 @@ const nextPost =
     </div>
     <article
       id="article"
-      class="app-prose mx-auto mt-8 max-w-app prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)"
+      class="app-prose mt-8 max-w-app prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg)"
     >
       <Content />
     </article>

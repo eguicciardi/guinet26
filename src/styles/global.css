@@ -40,7 +40,7 @@ html[data-theme="dark"] {
     @apply overflow-y-scroll scroll-smooth;
   }
   body {
-    @apply flex min-h-svh flex-col bg-background font-mono text-foreground selection:bg-accent/75 selection:text-background;
+    @apply flex min-h-svh flex-col bg-background font-mono text-foreground selection:bg-accent/75 selection:text-background sm:ps-8 lg:ps-16;
   }
   a,
   button {
@@ -52,7 +52,7 @@ html[data-theme="dark"] {
   }
   section,
   footer {
-    @apply mx-auto max-w-app px-4;
+    @apply max-w-app px-4;
   }
 }
 

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coordinated light accent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+    background: #e9e9e9;
+    color: #282728;
+    padding: 24px;
+  }
+  .intro { max-width: 1200px; margin: 0 auto 20px; }
+  .intro h2 { font-size: 20px; margin: 0 0 6px; }
+  .intro p { margin: 0; color: #555; font-size: 13px; line-height: 1.5; }
+
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1200px; margin: 0 auto; }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+  .option { border: 2px solid #ccc; border-radius: 8px; overflow: hidden; cursor: pointer; transition: border-color .15s, box-shadow .15s; }
+  .option:hover { border-color: var(--a); }
+  .option.selected { border-color: var(--a); box-shadow: 0 0 0 3px color-mix(in srgb, var(--a) 25%, transparent); }
+
+  .tag { display:flex; align-items:center; justify-content:space-between; font-size: 11px; letter-spacing:.06em; text-transform: uppercase; padding: 9px 12px; background:#f0f0f0; color:#555; border-bottom:1px solid #ece9e9; }
+  .tag .hex { color: var(--a); font-weight:600; text-transform:none; letter-spacing:0; }
+
+  .page { background:#fdfdfd; color:#282728; padding: 22px 20px 26px; min-height: 360px; }
+  a { color: var(--a); }
+  .name { font-size: 20px; font-weight: 700; margin: 0 0 16px; }
+  .section { margin: 0 0 18px; }
+  .head { font-size: 13px; font-weight: 600; margin: 0 0 8px; display:flex; gap:8px; }
+  .bullet { color:#b5b5b5; font-weight:400; }
+  .bio { font-size: 11.5px; line-height: 1.6; color:#3a3a3a; margin: 0 0 10px; }
+  ul.tree { list-style:none; margin:0; padding:0 0 0 4px; }
+  ul.tree li { display:flex; gap:9px; align-items:baseline; padding:3px 0; font-size:12px; }
+  .date { color:#8a8a8a; font-variant-numeric: tabular-nums; }
+  .rowtitle a { text-decoration:none; }
+  .rowtitle a:hover { text-decoration:underline; text-underline-offset:3px; }
+  .seeall { color: var(--a); font-size: 11.5px; }
+  .cr { font-size:10px; color:#8a8a8a; padding: 0 12px 12px; }
+  .paired { display:flex; align-items:center; gap:6px; font-size:10px; color:#888; padding: 6px 12px 0; }
+  .sw { width:12px; height:12px; border-radius:3px; display:inline-block; }
+</style>
+</head>
+<body>
+  <div class="intro">
+    <h2>Accento light coordinato col magenta dark (#ff5cae)</h2>
+    <p>Stesso hue pink-magenta, ma pi&#249; scuro per reggere il contrasto su fondo chiaro (#fdfdfd). Ogni card mostra sopra la coppia light&harr;dark. Clicca quella che preferisci.</p>
+  </div>
+
+  <div class="grid">
+    <!-- A: raspberry magenta -->
+    <div class="option" style="--a:#c81e77" data-choice="c81e77" onclick="toggleSelect(this)">
+      <div class="tag"><span>A &middot; Raspberry</span><span class="hex">#c81e77</span></div>
+      <div class="paired">coppia: <span class="sw" style="background:#c81e77"></span>light <span class="sw" style="background:#ff5cae"></span>dark</div>
+      <div class="page">
+        <div class="name">Emanuele Guicciardi</div>
+        <div class="section">
+          <div class="head"><span class="bullet">&bull;</span> info</div>
+          <p class="bio">Senior full-stack developer, backend &amp; modern JS. At <a href="#">Lifetronic Srl</a>, Pisa.</p>
+          <ul class="tree"><li><span class="bullet">&#9702;</span><a href="#">github</a></li><li><span class="bullet">&#9702;</span><a href="#">linkedin</a></li></ul>
+        </div>
+        <div class="section">
+          <div class="head"><span class="bullet">&bull;</span> links</div>
+          <ul class="tree">
+            <li><span class="bullet">&#9702;</span><span class="date">2026-04-07</span><span class="rowtitle"><a href="#">Dropping Cloudflare for bunny.net &#8599;</a></span></li>
+            <li><span class="bullet">&#9702;</span><span class="date">2025-09-12</span><span class="rowtitle"><a href="#">UTF-8 is a Brilliant Design &#8599;</a></span></li>
+          </ul>
+          <span class="seeall">see all links &rarr;</span>
+        </div>
+      </div>
+      <div class="cr">Contrasto su bianco &asymp; 6.0:1 &middot; AA ok (anche testo piccolo)</div>
+    </div>
+
+    <!-- B: deep berry -->
+    <div class="option" style="--a:#a81c66" data-choice="a81c66" onclick="toggleSelect(this)">
+      <div class="tag"><span>B &middot; Deep berry</span><span class="hex">#a81c66</span></div>
+      <div class="paired">coppia: <span class="sw" style="background:#a81c66"></span>light <span class="sw" style="background:#ff5cae"></span>dark</div>
+      <div class="page">
+        <div class="name">Emanuele Guicciardi</div>
+        <div class="section">
+          <div class="head"><span class="bullet">&bull;</span> info</div>
+          <p class="bio">Senior full-stack developer, backend &amp; modern JS. At <a href="#">Lifetronic Srl</a>, Pisa.</p>
+          <ul class="tree"><li><span class="bullet">&#9702;</span><a href="#">github</a></li><li><span class="bullet">&#9702;</span><a href="#">linkedin</a></li></ul>
+        </div>
+        <div class="section">
+          <div class="head"><span class="bullet">&bull;</span> links</div>
+          <ul class="tree">
+            <li><span class="bullet">&#9702;</span><span class="date">2026-04-07</span><span class="rowtitle"><a href="#">Dropping Cloudflare for bunny.net &#8599;</a></span></li>
+            <li><span class="bullet">&#9702;</span><span class="date">2025-09-12</span><span class="rowtitle"><a href="#">UTF-8 is a Brilliant Design &#8599;</a></span></li>
+          </ul>
+          <span class="seeall">see all links &rarr;</span>
+        </div>
+      </div>
+      <div class="cr">Contrasto su bianco &asymp; 7.4:1 &middot; AA/AAA &middot; pi&#249; sobrio</div>
+    </div>
+
+    <!-- C: vivid pink-red -->
+    <div class="option" style="--a:#d61f6a" data-choice="d61f6a" onclick="toggleSelect(this)">
+      <div class="tag"><span>C &middot; Vivid pink-red</span><span class="hex">#d61f6a</span></div>
+      <div class="paired">coppia: <span class="sw" style="background:#d61f6a"></span>light <span class="sw" style="background:#ff5cae"></span>dark</div>
+      <div class="page">
+        <div class="name">Emanuele Guicciardi</div>
+        <div class="section">
+          <div class="head"><span class="bullet">&bull;</span> info</div>
+          <p class="bio">Senior full-stack developer, backend &amp; modern JS. At <a href="#">Lifetronic Srl</a>, Pisa.</p>
+          <ul class="tree"><li><span class="bullet">&#9702;</span><a href="#">github</a></li><li><span class="bullet">&#9702;</span><a href="#">linkedin</a></li></ul>
+        </div>
+        <div class="section">
+          <div class="head"><span class="bullet">&bull;</span> links</div>
+          <ul class="tree">
+            <li><span class="bullet">&#9702;</span><span class="date">2026-04-07</span><span class="rowtitle"><a href="#">Dropping Cloudflare for bunny.net &#8599;</a></span></li>
+            <li><span class="bullet">&#9702;</span><span class="date">2025-09-12</span><span class="rowtitle"><a href="#">UTF-8 is a Brilliant Design &#8599;</a></span></li>
+          </ul>
+          <span class="seeall">see all links &rarr;</span>
+        </div>
+      </div>
+      <div class="cr">Contrasto su bianco &asymp; 5.0:1 &middot; AA ok &middot; pi&#249; acceso, vicino al dark</div>
+    </div>
+  </div>
+</body>
+</html>

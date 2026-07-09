@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alignment compare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+    background: #f4f4f4;
+    color: #111;
+    padding: 24px;
+  }
+  .intro { max-width: 1200px; margin: 0 auto 20px; }
+  .intro h2 { font-size: 20px; margin: 0 0 6px; }
+  .intro p { margin: 0; color: #555; font-size: 13px; line-height: 1.5; }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1200px; margin: 0 auto; }
+  @media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
+
+  .option { border: 2px solid #ccc; border-radius: 8px; overflow: hidden; cursor: pointer; transition: border-color .15s; background: #fdfdfd; }
+  .option:hover { border-color: #006cac; }
+  .option.selected { border-color: #006cac; box-shadow: 0 0 0 3px rgba(0,108,172,.15); }
+  .tag { display:flex; align-items:center; justify-content:space-between; font-size: 12px; letter-spacing:.06em; text-transform: uppercase; padding: 10px 14px; background:#f0f0f0; color:#555; border-bottom:1px solid #ece9e9; }
+  .tag .letter { font-weight:700; color:#006cac; }
+
+  /* simulated browser window */
+  .win { background:#fdfdfd; color:#282728; min-height: 520px; }
+  .winbar { height: 26px; background:#e9e9e9; border-bottom:1px solid #ddd; display:flex; align-items:center; gap:6px; padding:0 10px; }
+  .dot { width:9px; height:9px; border-radius:50%; background:#c9c9c9; }
+
+  .nav { display:flex; gap:16px; padding:12px 0; font-size:12px; color:#8a8a8a; border-bottom:1px solid #ece9e9; }
+  .nav a { color:#8a8a8a; text-decoration:none; }
+
+  a { color:#006cac; }
+  .name { font-size: 22px; font-weight: 700; margin: 20px 0 18px; }
+  .section { margin: 0 0 20px; }
+  .section .head { font-size: 14px; font-weight: 600; margin: 0 0 8px; display:flex; gap:8px; }
+  .bullet { color:#b5b5b5; font-weight:400; }
+  .bio { font-size: 12px; line-height: 1.6; color:#3a3a3a; margin: 0 0 10px; }
+  ul.tree { list-style:none; margin:0; padding:0 0 0 4px; }
+  ul.tree li { display:flex; gap:9px; align-items:baseline; padding:3px 0; font-size:12.5px; }
+  .date { color:#8a8a8a; font-variant-numeric: tabular-nums; }
+  .rowtitle a { text-decoration:none; }
+
+  /* CENTERED: content column centered in the viewport */
+  .centered .inner { max-width: 640px; margin: 0 auto; padding: 0 20px; }
+  /* LEFT: content column pinned to the left with a modest left margin */
+  .leftaligned .inner { max-width: 640px; margin: 0; padding: 0 20px 0 48px; }
+
+  .note { font-size: 11px; color:#8a8a8a; margin-top: 10px; padding: 0 20px; }
+  .leftaligned .note { padding-left: 48px; }
+  .centered .note { text-align:center; }
+</style>
+</head>
+<body>
+  <div class="intro">
+    <h2>Colonna centrata vs ancorata a sinistra</h2>
+    <p>Stessa larghezza di colonna (~640px), stesso contenuto. Cambia solo dove sta nella finestra. Clicca quella che preferisci.</p>
+  </div>
+
+  <div class="split">
+    <!-- A: centered -->
+    <div class="option centered" data-choice="centered" onclick="toggleSelect(this)">
+      <div class="tag"><span>Centrata (come il sito attuale)</span><span class="letter">A</span></div>
+      <div class="win">
+        <div class="winbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <div class="inner">
+          <div class="nav"><a>search</a><a>tags</a><a>about</a><span style="margin-left:auto">&#9789;</span></div>
+          <div class="name">Emanuele Guicciardi</div>
+          <div class="section">
+            <div class="head"><span class="bullet">&bull;</span> info</div>
+            <p class="bio">Senior full-stack developer focused on backend architecture and modern JS. Currently at Lifetronic Srl, Pisa.</p>
+            <ul class="tree">
+              <li><span class="bullet">&#9702;</span><a href="#">github</a></li>
+              <li><span class="bullet">&#9702;</span><a href="#">linkedin</a></li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="head"><span class="bullet">&bull;</span> links</div>
+            <ul class="tree">
+              <li><span class="bullet">&#9702;</span><span class="date">2026-04-07</span><span class="rowtitle"><a href="#">Dropping Cloudflare for bunny.net &#8599;</a></span></li>
+              <li><span class="bullet">&#9702;</span><span class="date">2025-09-12</span><span class="rowtitle"><a href="#">UTF-8 is a Brilliant Design &#8599;</a></span></li>
+            </ul>
+          </div>
+        </div>
+        <p class="note">Bilanciata, margini uguali ai due lati. Look "sito".</p>
+      </div>
+    </div>
+
+    <!-- B: left aligned -->
+    <div class="option leftaligned" data-choice="left" onclick="toggleSelect(this)">
+      <div class="tag"><span>Ancorata a sinistra (come il riferimento)</span><span class="letter">B</span></div>
+      <div class="win">
+        <div class="winbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <div class="inner">
+          <div class="nav"><a>search</a><a>tags</a><a>about</a></div>
+          <div class="name">Emanuele Guicciardi</div>
+          <div class="section">
+            <div class="head"><span class="bullet">&bull;</span> info</div>
+            <p class="bio">Senior full-stack developer focused on backend architecture and modern JS. Currently at Lifetronic Srl, Pisa.</p>
+            <ul class="tree">
+              <li><span class="bullet">&#9702;</span><a href="#">github</a></li>
+              <li><span class="bullet">&#9702;</span><a href="#">linkedin</a></li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="head"><span class="bullet">&bull;</span> links</div>
+            <ul class="tree">
+              <li><span class="bullet">&#9702;</span><span class="date">2026-04-07</span><span class="rowtitle"><a href="#">Dropping Cloudflare for bunny.net &#8599;</a></span></li>
+              <li><span class="bullet">&#9702;</span><span class="date">2025-09-12</span><span class="rowtitle"><a href="#">UTF-8 is a Brilliant Design &#8599;</a></span></li>
+            </ul>
+          </div>
+        </div>
+        <p class="note">Documento-like, ampio spazio a destra. Pi&#249; vicino al riferimento.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

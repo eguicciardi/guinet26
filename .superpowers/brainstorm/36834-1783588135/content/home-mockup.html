@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+    background: #f4f4f4;
+    color: #111;
+    padding: 24px;
+  }
+  .intro { max-width: 1100px; margin: 0 auto 20px; }
+  .intro h1 { font-size: 20px; margin: 0 0 6px; }
+  .intro p { margin: 0; color: #555; font-size: 13px; line-height: 1.5; }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1100px; margin: 0 auto; }
+  @media (max-width: 820px) { .split { grid-template-columns: 1fr; } }
+
+  .frame { border: 1px solid #ccc; border-radius: 8px; overflow: hidden; }
+  .frame-head { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; padding: 8px 14px; border-bottom: 1px solid; }
+
+  /* LIGHT theme (matches site --background #fdfdfd / --accent #006cac) */
+  .light .page { background: #fdfdfd; color: #282728; }
+  .light .frame-head { background: #f0f0f0; color: #555; border-color: #ece9e9; }
+  .light a { color: #006cac; }
+  .light .muted { color: #6b6b6b; }
+  .light .date { color: #8a8a8a; }
+  .light .bullet { color: #b5b5b5; }
+  .light .hr { border-color: #ece9e9; }
+
+  /* DARK theme (matches site --background #212737 / --accent #ff6b01) */
+  .dark .page { background: #212737; color: #eaedf3; }
+  .dark .frame-head { background: #1a2030; color: #9aa4bd; border-color: #343f60; }
+  .dark a { color: #ff6b01; }
+  .dark .muted { color: #9aa4bd; }
+  .dark .date { color: #7f89a6; }
+  .dark .bullet { color: #4a5680; }
+  .dark .hr { border-color: #343f60; }
+
+  .page { padding: 28px 26px 34px; min-height: 560px; }
+  .name { font-size: 26px; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 22px; }
+
+  .section { margin: 0 0 26px; }
+  .section > .head {
+    display: flex; align-items: baseline; gap: 10px;
+    font-size: 15px; font-weight: 600; margin: 0 0 10px;
+  }
+  .section > .head .bullet { font-weight: 400; }
+  .section .bio { font-size: 12.5px; line-height: 1.6; margin: 0 0 12px; }
+
+  ul.tree { list-style: none; margin: 0; padding: 0 0 0 4px; }
+  ul.tree li { display: flex; gap: 10px; align-items: baseline; padding: 4px 0; font-size: 13px; line-height: 1.45; }
+  ul.tree li .bullet { flex: 0 0 auto; }
+  .date { flex: 0 0 auto; font-variant-numeric: tabular-nums; }
+  .rowtitle a { text-decoration: none; }
+  .rowtitle a:hover { text-decoration: underline; text-underline-offset: 3px; text-decoration-style: dashed; }
+  .kind { font-size: 10px; letter-spacing: .06em; opacity: .55; border: 1px solid currentColor; border-radius: 4px; padding: 0 4px; margin-left: 6px; }
+  .seeall { display: inline-block; margin-top: 8px; font-size: 12px; }
+  .empty { font-size: 12px; font-style: italic; }
+  .rss { font-size: 13px; }
+</style>
+</head>
+<body>
+  <div class="intro">
+    <h1>Home &mdash; &ldquo;minimal rifinito&rdquo; in IBM Plex Mono</h1>
+    <p>Stack verticale: title &rarr; info (bio completa + link) &rarr; articles &rarr; links &rarr; rss. Stessi colori accent del tuo tema (blu in light, arancio in dark), liste annidate, date allineate. Stesso mockup nei due temi per confronto.</p>
+  </div>
+
+  <div class="split">
+    <!-- LIGHT -->
+    <div class="frame light">
+      <div class="frame-head">Light theme</div>
+      <div class="page">
+        <div class="name">Emanuele Guicciardi</div>
+
+        <div class="section">
+          <div class="head"><span class="bullet">&bull;</span> info</div>
+          <p class="bio">Senior full-stack developer with a strong focus on backend architecture and modern JavaScript frameworks. I build scalable applications, design robust APIs, and orchestrate DevOps workflows with Docker and AWS. Currently Senior Developer at <a href="#">Lifetronic Srl</a>, Pisa, Italy.</p>
+          <ul class="tree">
+            <li><span class="bullet">&#9702;</span><span class="rowtitle"><a href="#">about</a></span></li>
+            <li><span class="bullet">&#9702;</span><span class="rowtitle"><a href="#">github</a></span></li>
+            <li><span class="bullet">&#9702;</span><span class="rowtitle"><a href="#">linkedin</a></span></li>
+            <li><span class="bullet">&#9702;</span><span class="rowtitle"><a href="#">email</a></span></li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <div class="head"><span class="bullet">&bull;</span> articles</div>
+          <ul class="tree">
+            <li><span class="bullet">&#9702;</span><span class="date">2026-05-02</span><span class="rowtitle"><a href="#">The anatomy of a slow query</a> <span class="kind">demo</span></span></li>
+            <li><span class="bullet">&#9702;</span><span class="date">2026-03-18</span><span class="rowtitle"><a href="#">Notes on event-driven backends</a> <span class="kind">demo</span></span></li>
+          </ul>
+          <a class="seeall" href="#">see all articles &rarr;</a>
+        </div>
+
+        <div class="section">
+          <div class="head"><span class="bullet">&bull;</span> links</div>
+          <ul class="tree">
+            <li><span class="bullet">&#9702;</span><span class="date">2026-04-07</span><span class="rowtitle"><a href="#">Dropping Cloudflare for bunny.net &#8599;</a></span></li>
+            <li><span class="bullet">&#9702;</span><span class="date">2025-09-12</span><span class="rowtitle"><a href="#">UTF-8 is a Brilliant Design &#8599;</a></span></li>
+            <li><span class="bullet">&#9702;</span><span class="date">2025-09-10</span><span class="rowtitle"><a href="#">Building Vector Tiles from scratch &#8599;</a></span></li>
+            <li><span class="bullet">&#9702;</span><span class="date">2025-08-23</span><span class="rowtitle"><a href="#">We'd be Better Off with 9-bit Bytes &#8599;</a></span></li>
+          </ul>
+          <a class="seeall" href="#">see all links &rarr;</a>
+        </div>
+
+        <div class="section">
+          <div class="head"><span class="bullet">&bull;</span> <a class="rss" href="#">rss</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DARK -->
+    <div class="frame dark">
+      <div class="frame-head">Dark theme</div>
+      <div class="page">
+        <div class="name">Emanuele Guicciardi</div>
+
+        <div class="section">
+          <div class="head"><span class="bullet">&bull;</span> info</div>
+          <p class="bio">Senior full-stack developer with a strong focus on backend architecture and modern JavaScript frameworks. I build scalable applications, design robust APIs, and orchestrate DevOps workflows with Docker and AWS. Currently Senior Developer at <a href="#">Lifetronic Srl</a>, Pisa, Italy.</p>
+          <ul class="tree">
+            <li><span class="bullet">&#9702;</span><span class="rowtitle"><a href="#">about</a></span></li>
+            <li><span class="bullet">&#9702;</span><span class="rowtitle"><a href="#">github</a></span></li>
+            <li><span class="bullet">&#9702;</span><span class="rowtitle"><a href="#">linkedin</a></span></li>
+            <li><span class="bullet">&#9702;</span><span class="rowtitle"><a href="#">email</a></span></li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <div class="head"><span class="bullet">&bull;</span> articles</div>
+          <ul class="tree">
+            <li><span class="bullet">&#9702;</span><span class="date">2026-05-02</span><span class="rowtitle"><a href="#">The anatomy of a slow query</a> <span class="kind">demo</span></span></li>
+            <li><span class="bullet">&#9702;</span><span class="date">2026-03-18</span><span class="rowtitle"><a href="#">Notes on event-driven backends</a> <span class="kind">demo</span></span></li>
+          </ul>
+          <a class="seeall" href="#">see all articles &rarr;</a>
+        </div>
+
+        <div class="section">
+          <div class="head"><span class="bullet">&bull;</span> links</div>
+          <ul class="tree">
+            <li><span class="bullet">&#9702;</span><span class="date">2026-04-07</span><span class="rowtitle"><a href="#">Dropping Cloudflare for bunny.net &#8599;</a></span></li>
+            <li><span class="bullet">&#9702;</span><span class="date">2025-09-12</span><span class="rowtitle"><a href="#">UTF-8 is a Brilliant Design &#8599;</a></span></li>
+            <li><span class="bullet">&#9702;</span><span class="date">2025-09-10</span><span class="rowtitle"><a href="#">Building Vector Tiles from scratch &#8599;</a></span></li>
+            <li><span class="bullet">&#9702;</span><span class="date">2025-08-23</span><span class="rowtitle"><a href="#">We'd be Better Off with 9-bit Bytes &#8599;</a></span></li>
+          </ul>
+          <a class="seeall" href="#">see all links &rarr;</a>
+        </div>
+
+        <div class="section">
+          <div class="head"><span class="bullet">&bull;</span> <a class="rss" href="#">rss</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

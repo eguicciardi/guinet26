@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Magenta accent (dark)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+    background: #14161f;
+    color: #eaedf3;
+    padding: 24px;
+  }
+  .intro { max-width: 1200px; margin: 0 auto 20px; }
+  .intro h2 { font-size: 20px; margin: 0 0 6px; }
+  .intro p { margin: 0; color: #9aa4bd; font-size: 13px; line-height: 1.5; }
+
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1200px; margin: 0 auto; }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+  .option { border: 2px solid #343f60; border-radius: 8px; overflow: hidden; cursor: pointer; transition: border-color .15s, box-shadow .15s; }
+  .option:hover { border-color: var(--a); }
+  .option.selected { border-color: var(--a); box-shadow: 0 0 0 3px color-mix(in srgb, var(--a) 30%, transparent); }
+
+  .tag { display:flex; align-items:center; justify-content:space-between; font-size: 11px; letter-spacing:.06em; text-transform: uppercase; padding: 9px 12px; background:#1a2030; color:#9aa4bd; border-bottom:1px solid #343f60; }
+  .tag .hex { color: var(--a); font-weight:600; text-transform:none; letter-spacing:0; }
+
+  .page { background:#212737; color:#eaedf3; padding: 22px 20px 26px; min-height: 360px; }
+  a { color: var(--a); }
+  .name { font-size: 20px; font-weight: 700; margin: 0 0 16px; }
+  .section { margin: 0 0 18px; }
+  .head { font-size: 13px; font-weight: 600; margin: 0 0 8px; display:flex; gap:8px; }
+  .bullet { color:#4a5680; font-weight:400; }
+  .bio { font-size: 11.5px; line-height: 1.6; color:#c4cadb; margin: 0 0 10px; }
+  ul.tree { list-style:none; margin:0; padding:0 0 0 4px; }
+  ul.tree li { display:flex; gap:9px; align-items:baseline; padding:3px 0; font-size:12px; }
+  .date { color:#7f89a6; font-variant-numeric: tabular-nums; }
+  .rowtitle a { text-decoration:none; }
+  .rowtitle a:hover { text-decoration:underline; text-underline-offset:3px; }
+  .selbadge { background: var(--a); color:#212737; }
+  .seeall { color: var(--a); font-size: 11.5px; }
+</style>
+</head>
+<body>
+  <div class="intro">
+    <h2>Accento magenta per il dark theme &mdash; tre gradazioni</h2>
+    <p>Sfondo dark del sito (#212737). L'accento colora link, nome hover, "see all", bordo selezione. Clicca quella che preferisci. (In light resta il blu attuale, salvo tu voglia cambiarlo.)</p>
+  </div>
+
+  <div class="grid">
+    <!-- A: hot pink magenta -->
+    <div class="option" style="--a:#ff5cae" data-choice="ff5cae" onclick="toggleSelect(this)">
+      <div class="tag"><span>A &middot; Hot magenta</span><span class="hex">#ff5cae</span></div>
+      <div class="page">
+        <div class="name">Emanuele Guicciardi</div>
+        <div class="section">
+          <div class="head"><span class="bullet">&bull;</span> info</div>
+          <p class="bio">Senior full-stack developer, backend &amp; modern JS. At <a href="#">Lifetronic Srl</a>, Pisa.</p>
+          <ul class="tree">
+            <li><span class="bullet">&#9702;</span><a href="#">github</a></li>
+            <li><span class="bullet">&#9702;</span><a href="#">linkedin</a></li>
+          </ul>
+        </div>
+        <div class="section">
+          <div class="head"><span class="bullet">&bull;</span> links</div>
+          <ul class="tree">
+            <li><span class="bullet">&#9702;</span><span class="date">2026-04-07</span><span class="rowtitle"><a href="#">Dropping Cloudflare for bunny.net &#8599;</a></span></li>
+            <li><span class="bullet">&#9702;</span><span class="date">2025-09-12</span><span class="rowtitle"><a href="#">UTF-8 is a Brilliant Design &#8599;</a></span></li>
+          </ul>
+          <span class="seeall">see all links &rarr;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- B: true magenta -->
+    <div class="option" style="--a:#e0409f" data-choice="e0409f" onclick="toggleSelect(this)">
+      <div class="tag"><span>B &middot; True magenta</span><span class="hex">#e0409f</span></div>
+      <div class="page">
+        <div class="name">Emanuele Guicciardi</div>
+        <div class="section">
+          <div class="head"><span class="bullet">&bull;</span> info</div>
+          <p class="bio">Senior full-stack developer, backend &amp; modern JS. At <a href="#">Lifetronic Srl</a>, Pisa.</p>
+          <ul class="tree">
+            <li><span class="bullet">&#9702;</span><a href="#">github</a></li>
+            <li><span class="bullet">&#9702;</span><a href="#">linkedin</a></li>
+          </ul>
+        </div>
+        <div class="section">
+          <div class="head"><span class="bullet">&bull;</span> links</div>
+          <ul class="tree">
+            <li><span class="bullet">&#9702;</span><span class="date">2026-04-07</span><span class="rowtitle"><a href="#">Dropping Cloudflare for bunny.net &#8599;</a></span></li>
+            <li><span class="bullet">&#9702;</span><span class="date">2025-09-12</span><span class="rowtitle"><a href="#">UTF-8 is a Brilliant Design &#8599;</a></span></li>
+          </ul>
+          <span class="seeall">see all links &rarr;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- C: fuchsia / purple-leaning -->
+    <div class="option" style="--a:#c951e7" data-choice="c951e7" onclick="toggleSelect(this)">
+      <div class="tag"><span>C &middot; Fuchsia (viola)</span><span class="hex">#c951e7</span></div>
+      <div class="page">
+        <div class="name">Emanuele Guicciardi</div>
+        <div class="section">
+          <div class="head"><span class="bullet">&bull;</span> info</div>
+          <p class="bio">Senior full-stack developer, backend &amp; modern JS. At <a href="#">Lifetronic Srl</a>, Pisa.</p>
+          <ul class="tree">
+            <li><span class="bullet">&#9702;</span><a href="#">github</a></li>
+            <li><span class="bullet">&#9702;</span><a href="#">linkedin</a></li>
+          </ul>
+        </div>
+        <div class="section">
+          <div class="head"><span class="bullet">&bull;</span> links</div>
+          <ul class="tree">
+            <li><span class="bullet">&#9702;</span><span class="date">2026-04-07</span><span class="rowtitle"><a href="#">Dropping Cloudflare for bunny.net &#8599;</a></span></li>
+            <li><span class="bullet">&#9702;</span><span class="date">2025-09-12</span><span class="rowtitle"><a href="#">UTF-8 is a Brilliant Design &#8599;</a></span></li>
+          </ul>
+          <span class="seeall">see all links &rarr;</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

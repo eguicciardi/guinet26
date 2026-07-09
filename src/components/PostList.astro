@@ -28,6 +28,7 @@ const formatDate = (date: Date, tz?: string) =>
       const isLink = data.type === "link";
       const href =
         isLink && data.resourceUrl ? data.resourceUrl : getPath(id, filePath);
+      const isExternal = isLink && Boolean(data.resourceUrl);
       return (
         <li class="flex items-baseline gap-3">
           <span class="select-none opacity-60" aria-hidden="true">
@@ -41,12 +42,12 @@ const formatDate = (date: Date, tz?: string) =>
           </time>
           <a
             href={href}
-            target={isLink ? "_blank" : undefined}
-            rel={isLink ? "noopener noreferrer" : undefined}
+            target={isExternal ? "_blank" : undefined}
+            rel={isExternal ? "noopener noreferrer" : undefined}
             class="text-accent decoration-dashed underline-offset-4 hover:underline"
           >
             {data.title}
-            {isLink && (
+            {isExternal && (
               <IconExternalLink class="inline-block size-4 align-text-top" />
             )}
           </a>
